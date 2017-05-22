@@ -1,0 +1,7 @@
+qa:
+  jsonplaceholder:  "http://jsonplaceholder.typicode.com/"
+  walmart:  "http://jsonplaceholder.typicode.com/"
+
+prod:
+  jsonplaceholder:  "http://jsonplaceholder.typicode.com/"
+  walmart:  "http://jsonplaceholder.typicode.com/"
