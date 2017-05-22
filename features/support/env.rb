@@ -1,0 +1,13 @@
+require 'capybara'
+require 'capybara/cucumber'
+require 'selenium-webdriver'
+require 'site_prism'
+require 'rspec'
+require 'yaml'
+require 'fileutils'
+require "i18n"
+require_relative 'helper.rb'
+require 'imatcher'
+require 'chunky_png'
+require 'os'
+require 'httparty'
