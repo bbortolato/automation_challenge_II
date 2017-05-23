@@ -2,8 +2,8 @@
 ##### --- Instancia servico de consulta dos posts --- #####
 
 Dado(/^que eu efetue uma consulta no serviço que lista todos os posts disponiveis\.$/) do
-  @consultar_posts = PostManager.new
-  @response = @consultar_posts.consulta_lista_posts
+  @consulta_posts = PostManager.new
+  @response = @consulta_posts.consulta_lista_posts
 end
 
 ##### --- Validação lista de consulta dos posts --- #####
@@ -34,9 +34,9 @@ end
 #### --- Consulta post por id --- ####
 
 Dado(/^que eu efetue uma consulta no serviço de consulta de posts com o (\d+)$/) do |post_id|
-  @consulta = PostManager.new
+  @consulta_posts = PostManager.new
   @post_id = post_id
-  @response = @consulta.consulta_posts(@post_id)
+  @response = @consulta_posts.consulta_posts(@post_id)
 end
 
 Entao(/^irei validar os campos retornado nessa busca$/) do

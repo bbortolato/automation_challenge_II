@@ -10,7 +10,6 @@ ENVIRONMENT_TYPE = ENV['env'] || ENV['ENV']
 USERNAME = ENV['username']
 PASSWORD = ENV['password']
 ENVIRONMENT = YAML.load_file('./features/support/environments.yaml')[ENVIRONMENT_TYPE]
-puts ENVIRONMENT
 
 Capybara.default_max_wait_time = 300
 

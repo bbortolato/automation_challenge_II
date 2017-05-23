@@ -18,7 +18,7 @@ class PostManager
     self.class.post("/posts", body: body)
   end
 
-  def delet_post()
-    self.class.delete("/posts")
+  def deletar_post(post_id)
+    self.class.delete("/posts/#{post_id}")
   end
 end
