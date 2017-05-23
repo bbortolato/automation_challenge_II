@@ -4,18 +4,15 @@ require 'selenium-webdriver'
 require 'site_prism'
 require 'rspec'
 require 'yaml'
-require 'fileutils'
-require "i18n"
-require_relative 'helper.rb'
-require 'imatcher'
-require 'chunky_png'
-require 'os'
 require 'httparty'
 
-ENVIRONMENT = ENV['ENVIRONMENT_TYPE']
+ENVIRONMENT_TYPE = ENV['env'] || ENV['ENV']
 USERNAME = ENV['username']
 PASSWORD = ENV['password']
-ENVIRONMENT = YAML.load_file('./features/support/config/environment.yaml')
+ENVIRONMENT = YAML.load_file('./features/support/environments.yaml')[ENVIRONMENT_TYPE]
+puts ENVIRONMENT
+
+Capybara.default_max_wait_time = 300
 
 
 Capybara.register_driver :selenium do |app|

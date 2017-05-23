@@ -2,6 +2,7 @@ class PostManager
   include HTTParty
 
   base_uri ENVIRONMENT['jsonplaceholder']
+  format :json
   headers 'Content-type' => 'application/json'
 
 
@@ -20,3 +21,4 @@ class PostManager
   def delet_post()
     self.class.delete("/posts")
   end
+end
