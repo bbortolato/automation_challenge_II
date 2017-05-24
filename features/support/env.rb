@@ -6,10 +6,10 @@ require 'rspec'
 require 'yaml'
 require 'httparty'
 
-ENVIRONMENT_TYPE = ENV['env'] || ENV['ENV']
+ENV['ENV'] = 'prod' unless ENV.key?('ENV' || 'env')
 USERNAME = ENV['username']
 PASSWORD = ENV['password']
-ENVIRONMENT = YAML.load_file('./features/support/environments.yaml')[ENVIRONMENT_TYPE]
+ENVIRONMENT = YAML.load_file('./features/support/environments.yaml')[ENV['ENV']]
 
 Capybara.default_max_wait_time = 300
 

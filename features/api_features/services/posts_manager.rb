@@ -1,3 +1,5 @@
+require_relative '../../../../automation_challenge_II/fixtures/data_json_factory/posts_manager_factory'
+
 class PostManager
   include HTTParty
 
@@ -14,8 +16,9 @@ class PostManager
     self.class.get("/posts/#{post_id}")
   end
 
-  def criar_post(title, body, user_id)
-    self.class.post("/posts", body: body)
+  def criar_post(user_id, post_id, title, post_body)
+    json_body = PostManagerFactory.new
+    self.class.post("/posts", body: json_body.new_post_factory(user_id,post_id,title,post_body))
   end
 
   def deletar_post(post_id)

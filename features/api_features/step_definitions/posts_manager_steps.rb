@@ -25,12 +25,6 @@ end
 
 
 
-#### --- Validação generica do responde code. --- ####
-
-Entao(/^eu irei validar seu codigo de retorno "([^"]*)"$/) do |response_code|
-  expect(@response.code).to eq(response_code.to_i)
-end
-
 #### --- Consulta post por id --- ####
 
 Dado(/^que eu efetue uma consulta no serviço de consulta de posts com o (\d+)$/) do |post_id|
@@ -44,4 +38,24 @@ Entao(/^irei validar os campos retornado nessa busca$/) do
   expect(@response.parsed_response['id']).to eq @post_id.to_i unless @response.code.equal?(404)
   expect(@response.parsed_response['title']).to have_content unless @response.code.equal?404
   expect(@response.parsed_response['body']).to have_content unless @response.code.equal?404
+end
+
+#### ---- Delete de posts ---- ####
+
+Dado(/^que eu efetue um delete na api com o (\d+)$/) do |post_id|
+  @delete_posts = PostManager.new
+  @response = @delete_posts.deletar_post(post_id)
+end
+
+
+#### ---- Criação de posts --- ####
+
+Dado(/^que eu efetue a criação de um novo post$/) do
+  @criar_posts = PostManager.new
+  @response = @criar_posts.criar_post(nil,nil,nil, nil)
+
+end
+
+Entao(/^irei validar o id "([^"]*)" do meu post criado$/) do |post_id|
+  expect(@response.parsed_response['id']).to eq post_id.to_i
 end
