@@ -5,6 +5,7 @@
     Tambem irei pular a opção de consultar um id antes de efetuar o delete, é um cenario
     conhecido e garantido que o delete sempre irá funcionar no escopo de teste dessa api)
 
+    @api
     Esquema do Cenario: Efetuar
       Dado que eu efetue um delete na api com o <post_id>
       Entao eu irei validar seu codigo de retorno "<response_code>"
