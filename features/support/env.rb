@@ -7,11 +7,12 @@ require 'yaml'
 require 'httparty'
 
 ENV['ENV'] = 'prod' unless ENV.key?('ENV' || 'env')
+BROWSER = 'chrome' unless ENV.key?('BROWSER' || 'browser')
 USERNAME = ENV['username']
 PASSWORD = ENV['password']
 ENVIRONMENT = YAML.load_file('./features/support/environments.yaml')[ENV['ENV']]
 
-Capybara.default_max_wait_time = 300
+Capybara.default_max_wait_time = 10
 
 
 Capybara.register_driver :selenium do |app|
@@ -31,3 +32,8 @@ Capybara.register_driver :selenium do |app|
     Capybara::Poltergeist::Driver.new(app, options)
   end
 end
+
+  ## configure the chosen browser
+  Capybara.configure do |config|
+    config.default_driver = :selenium
+  end
