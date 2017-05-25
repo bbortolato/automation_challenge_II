@@ -22,17 +22,19 @@ end
 
 Entao(/^irei adicionar esse item ao carrinho$/) do
   @walmartPage.add_to_cart.click
+  @walmartPage.button_insurances.click
 end
 
 Entao(/^irei acessar o meu carrinho e confirmar se o item consta no carrinho$/) do
-  @walmartPage.button_insurances.click
+  @walmartPage.button_cart.click
   expect(@walmartPage).to have_content('PH32E31DSGW')
 end
 
 Entao(/^irei para as proximas etapas ate efetuar o login$/) do
   @walmartPage.button_finalize_cart.click
-  @walmartPage.username.set(USERNAME)
-  @walmartPage.password.set(PASSWORD)
-  @walmartPage.button_login.click
+#  @walmartPage.username.set(USERNAME)
+#  @walmartPage.password.set(PASSWORD)
+#  @walmartPage.button_login.click
+  @walmartPage.login
   expect(@walmartPage).to have_content('Escolha um endereço para entrega')
 end

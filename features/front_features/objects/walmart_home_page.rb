@@ -9,7 +9,19 @@ class WalmartHomePage < SitePrism::Page
   element :button_insurances, '#navegaCarrinho'
   element :button_cart, 'a.topbar-buttons.open-link.cart-link'
   element :button_finalize_cart, '#btn-finalize-cart'
-  element :username,  'input#signinField.wm-input'
-  element :password,  'input#password.wm-input'
+  element :username,  '#signinField'
+  element :password,  '#password'
   element :button_login,'#signinButtonSend'
+  element :frame_login, '#iframeLogin'
+
+
+  def login
+    within_frame(frame_login) do
+      username.set(USERNAME)
+      password.set(PASSWORD)
+      button_login.click
+    end
+
+  end
+
 end
